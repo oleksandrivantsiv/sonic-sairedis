@@ -347,6 +347,8 @@ config_syncd_innovium()
 
 config_syncd_nvidia_bluefield()
 {
+    SAI_COMMON_FILE_PATH=/etc/bluefield/sai-common.profile
+
     # Read MAC addresses
     base_mac="$(echo $SYNCD_VARS | jq -r '.mac')"
     hwsku=$(sonic-cfggen -d -v 'DEVICE_METADATA["localhost"]["hwsku"]')
@@ -355,6 +357,10 @@ config_syncd_nvidia_bluefield()
     eth0_mac=$(cat /sys/class/net/Ethernet0/address)
 
     cp $HWSKU_DIR/sai.profile /tmp/sai.profile
+
+    if [ -f $SAI_COMMON_FILE_PATH ]; then
+        cat $SAI_COMMON_FILE_PATH >> /tmp/sai.profile
+    fi
 
     # Update sai.profile with MAC_ADDRESS
     echo "DEVICE_MAC_ADDRESS=$base_mac" >> /tmp/sai.profile
