@@ -103,6 +103,12 @@ pytest -v
 - **SAI compatibility**: Ensure changes work with the SAI version in the submodule
 - **VS testing**: All changes should be testable with VS platform
 - **Recording compatibility**: Don't break SAI recording/replay format
+- **PR description template**: Fill out all sections of the [PR template](pull_request_template.md) when submitting a pull request:
+  - **What I did**: Summarize the change being made
+  - **Why I did it**: Explain motivation and context for the change
+  - **How I verified it**: Provide steps or commands to test the change
+  - **Details if related**: Include any additional context, links, or related information
+
 
 ## Common Patterns
 
